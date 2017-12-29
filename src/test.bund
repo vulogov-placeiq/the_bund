@@ -1,0 +1,34 @@
+//
+// This is a program for testing BUND statements
+//
+
+let main ->
+  [main of redis {host is 'localhost'} {port is 5522}];;
+  (test 1 3.14 "answer")
+  (test.test (answer 42))
+  (1 2 3)
+  (A 3 4 5)
+  (let a b c)
+  {answer is 42}
+  {answer not (CalculateWrongAnswer)}
+  {embeddedfact not {answer is 42}}
+  (Fact {answer is 42})
+  f! (b 1 2 3 {local_factoid is 'Hello'} {another_factoid not 'World'}) .
+  ~f (FalseFunctor {Hello less World}) .
+  [main of redis {host is 'localhost'} {port is 5522}] ->
+    {this is is_a_fact}
+    {this_fact not False}
+  ;;
+  do GlobalSpawner 
+    {spawn is 10}
+    f! (b 1 2 3 {local_factoid is 'Hello'} {another_factoid not 'World'}) .
+  .
+;;
+
+let b ->
+  (B 1 2 3)
+;;
+
+let FalseFunctor ->
+  (C 1 2 3 )
+;;

@@ -1,0 +1,4 @@
+builder = Builder(action = "nuitka --standalone --show-progress --python-flag=no_site  $SOURCE")
+env = Environment(BUILDERS = {"Nuitka": builder})
+env.Nuitka("main.exe", "main.py")
+env.Command("../../bin/ops", "main.exe", Copy("$TARGET", "$SOURCE"))
