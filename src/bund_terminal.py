@@ -51,9 +51,21 @@ def str_dict(d):
         out += "%s %-36s %s %-60s\n"%(_sep, color(k,"cyan"), _sep, color(str(d[k]),"white"))
     return out
 
+class BUND_LOG:
+    def ok(self, msg, kw):
+        pass
+    def warning(self, msg, kw):
+        pass
+    def error(self, msg, kw):
+        pass
+
 class BUND_TERMINAL:
     def __init__(self):
         self.parser.add_argument("-v",  action="count", help="Increase verbosity")
+        self.parser.add_argument("--log",  help="BUND log")
+        self.log = BUND_LOG()
+    def prefight(self):
+        print "Preflight"
     def ok(self, msg, **kw):
         if self.log != None:
             self.log.ok(msg, kw)

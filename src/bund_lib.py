@@ -404,3 +404,16 @@ def create_module(name, _kw, desc="", **kw):
     m = types.ModuleType(name, desc)
     m.__dict__.update(_kw)
     return m
+    
+def get_from_env(*var_names, **kw):
+    _default = None
+    if kw.has_key("default"):
+        _default = kw["default"]
+    for e in var_names:
+        if kw.has_key("kw") and kw["kw"].has_key(e):
+            return kw["kw"][e]
+        elif os.environ.has_key(e):
+            return os.environ[e]
+        else:
+            pass
+    return _default

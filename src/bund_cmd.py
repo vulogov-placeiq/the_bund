@@ -4,11 +4,12 @@ import sys
 from bund_version import *
 from bund_lib import *
 from bund_terminal import *
+from bund_env import BUND_ENV, ENVIRONMENT, ENV
 
 class BUND_GEN(object):
     def __init__(self, _desc, _epilog):
         self.epilog = _epilog + ". Type: %s help for the general help"%sys.argv[0]
-        self.BANNER="GENERIC"
+        self.BANNER="BUND "+BUND_VERSION
         try:
             self.BUND_HOME = get_from_env("BUND_HOME", default="%s/.bund"%os.environ["HOME"])
         except:
