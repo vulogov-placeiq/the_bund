@@ -109,3 +109,5 @@ main.dist/*
 
 *.dot
 *.png
+src/.atomignore
+.atomignore
