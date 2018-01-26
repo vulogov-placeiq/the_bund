@@ -111,3 +111,5 @@ main.dist/*
 *.png
 src/.atomignore
 .atomignore
+bin/bund
+bin/bund

@@ -31,7 +31,7 @@ class BUND_GEN(object):
     def _mkbanner(self):
         return str_dict(self.env.cfg)
     def banner(self):
-        b = color(banner(self.BANNER), "magenta")
+        b = color(BUND_BANNER, "magenta")
         b += self._mkbanner()
         print b
         self.important("VERSION %s"%BUND_VERSION)

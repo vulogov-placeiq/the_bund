@@ -2,7 +2,10 @@
 ##
 ##
 import os
+import sys
 import posixpath
+from pyfiglet import Figlet
+import pyfiglet.fonts
 
 
 def rchop(thestring, ending):
@@ -261,7 +264,8 @@ def banner(s):
         from pyfiglet import Figlet
     except ImportError:
         return s
-    f = Figlet()
+    print sys.argv, posixpath.dirname(sys.argv[0])
+    f = Figlet(font="%s/standard"%posixpath.dirname(sys.argv[0]))
     return f.renderText(s)
 
 def dehumanize_time(_str, _default):
@@ -404,7 +408,7 @@ def create_module(name, _kw, desc="", **kw):
     m = types.ModuleType(name, desc)
     m.__dict__.update(_kw)
     return m
-    
+
 def get_from_env(*var_names, **kw):
     _default = None
     if kw.has_key("default"):
